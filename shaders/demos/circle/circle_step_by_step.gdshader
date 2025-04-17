@@ -1,8 +1,7 @@
 shader_type spatial;
 
-#include "res://shaders/util/coord_grid.gdshaderinc"
+#include "res://shaders/util/step_by_step.gdshaderinc"
 
-uniform int step_index = 0;
 uniform vec2 circle_center = vec2(0.5,0.5);
 uniform float circle_radius = 0.5;
 
@@ -11,22 +10,14 @@ void vertex() {
 }
 
 void fragment() {
-	if (step_index >= 0){
-		ALBEDO = coord_grid_2d(UV.xy,0).rgb;
-	}
+	ALBEDO.rg = UV.xy;
 	vec2 offset = UV - circle_center;
-	if (step_index >= 1) {
-		ALBEDO.xy = offset.xy;
-	}
+	ALBEDO = step_3d(ALBEDO,vec3(offset.xy,0),1);
 	float offset_length = length(offset);
-	if (step_index >= 2) {
-		ALBEDO.xyz = vec3(offset_length);
-	}
-	if (step_index >= 3) {
-		if (length(offset) < circle_radius) {
-			ALBEDO = vec3(0,0,0);
-		} else {
-			ALBEDO = vec3(1,1,1);
-		}
+	ALBEDO = step_3d(ALBEDO,vec3(offset_length),2);
+	if (length(offset) < circle_radius) {
+		ALBEDO = step_3d(ALBEDO,vec3(0,0,0),3);
+	} else {
+		ALBEDO = step_3d(ALBEDO,vec3(1,1,1),3);
 	}
 }

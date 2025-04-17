@@ -4,6 +4,9 @@
 
 #include "grid.gdshaderinc"
 
+// An array defining a bitmap for all printable ASCII characters.
+// The font used here is Unifont. Check it out if you are looking for a
+// comprehensive unicode bitmap font.
 const uint TEXT_8x16_ARRAY[] = {
 // ' '
 0x00000000u,0x00000000u,0x00000000u,0x00000000u,
@@ -197,36 +200,81 @@ const uint TEXT_8x16_ARRAY[] = {
 0x00000062u,0x928c0000u,0x00000000u,0x00000000u
 };
 
+// Samples a character with ASCII value `codepoint`, using `inner_coordinate`
+// as normalized coordinates indicating what part of the character's image
+// is to be sampled.
 bool text_16x16_sample(uint codepoint,vec2 inner_coordinate) {
+	// If the codepint does not correspond to a printable ASCII character,
+	// just return false;
 	if ( (codepoint < 32u) || (codepoint >= 128u) ) {
 		return false;
 	}
+	// Offset so the first printable ASCII char (space) is 1
 	codepoint -= 32u;
+	// Get which pixel we are trying to sample from the character's image
 	uvec2 inner_tile_position = uvec2(inner_coordinate * vec2(8,16));
+	// Get the index of the integer element we need to sample (each char
+	// consists of 4 32-bit ints, making an 8x16-bit image
 	uint int_index = codepoint*4u+inner_tile_position.y/4u;
+	// Get the index of the bit we need to sample in the integer we are
+	// sampling
 	uint bit_index = (3u-(inner_tile_position.y % 4u)) * 8u + 8u-inner_tile_position.x;
+	// Sample our calculated bit position for our calculated integer index
 	return ((TEXT_8x16_ARRAY[int_index] >> bit_index) & 1u) != 0u;
 }
 
+// Displays a float value `value` consisting of `leading`+1+`trailing`
+// characters, with `leading` leading characters, followed by a period,
+// followed by `trailing` trailing characters.
+// The `inner_coordinate` is used to indicate the position in the 1-char high,
+// `leading`+1+`trailing`-char wide readout is being sampled.
 bool float_readout(float value, vec2 inner_coordinate, uint leading, uint trailing) {
-	uint total_tiles = leading + 1u + trailing;
+	// Calculate how many characters wide the readout is
+	uint total_digits = leading + trailing;
+	uint total_tiles = total_digits + 1u;
+	// Calculate how we need to scale the x position to map between normalized
+	// `inner_coordinate` and tile coordinate
 	float hrz_scaling = 1.0 / float(total_tiles);
+	// Find the integer x coordinate of the character being sampled
 	int tile = int(inner_coordinate.x * float(total_tiles));
+	// If we were given bad coordinates, just return false.
 	if ((tile < 0) || (tile>=int(total_tiles))) {
 		return false;
 	}
+	// By default, assume we are rendering a space, in case things get weird.
 	uint codepoint = 32u;
+	// Perform digit calculations for all character positions that don't
+	// correspond with the decimal point.
 	if (tile != int(leading)) {
-		int  digit_position = int(leading)-tile;
+		int  digit_position = int(leading)-tile-1;
 		if (tile > int(leading)) {
 			digit_position ++;
 		}
-		float pow10_shift = pow(10.0,float(1-digit_position));
-		uint digit = uint(abs(int(value * pow10_shift))%10);
-		codepoint = uint(48 + digit_position);
+		uint digit = 0u;
+		float scaled_value = value * pow(10.0,-float(leading)+1.0);
+		scaled_value = min(10.0,scaled_value);
+		for (int i=int(leading)-1; i>=-int(trailing); i--) {
+			if (scaled_value >= 1.0) {
+				digit = uint(floor(abs(scaled_value)))%10u;
+				if (digit == 0u) {
+					digit = 1u;
+				}
+				scaled_value -= float(digit);
+			} else {
+				digit = 0u;
+			}
+			if (i == digit_position) {
+				break;
+			}
+			scaled_value *= 10.0;
+			scaled_value = min(10.0,scaled_value);
+		}
+		codepoint = uint(48u + digit);
 	} else {
+		// Set the code point for the decimal character
 		codepoint = 46u;
 	}
+	// Sample the bitmap of the codepoint we calculated
 	return text_16x16_sample(codepoint,inner_coord_2d(inner_coordinate,vec2(hrz_scaling,1.)));
 }
 

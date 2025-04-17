@@ -1,18 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctvy2lw5wkul5"]
+[gd_scene load_steps=5 format=3 uid="uid://ctvy2lw5wkul5"]
 
 [ext_resource type="Script" uid="uid://c6xh7ptqdy483" path="res://scripts/RectWall.cs" id="1_kpj6v"]
-[ext_resource type="Shader" uid="uid://cdpejhgwqk2pt" path="res://shaders/checkerboard.gdshader" id="2_7rf3p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ni5y8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7xvt5"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6x4w1"]
-render_priority = 0
-shader = ExtResource("2_7rf3p")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e84b4"]
+albedo_color = Color(0.321728, 0.321728, 0.321728, 1)
+metallic = 0.45
+metallic_specular = 0.66
+roughness = 0.53
 
-[node name="RectWall" type="RigidBody3D"]
-freeze = true
+[node name="RectWall" type="StaticBody3D"]
 script = ExtResource("1_kpj6v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -20,4 +20,4 @@ shape = SubResource("BoxShape3D_ni5y8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_7xvt5")
-surface_material_override/0 = SubResource("ShaderMaterial_6x4w1")
+surface_material_override/0 = SubResource("StandardMaterial3D_e84b4")
