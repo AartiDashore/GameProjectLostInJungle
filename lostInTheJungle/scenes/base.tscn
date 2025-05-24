@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://cs6wa8c18hpdk"]
+
+[ext_resource type="PackedScene" uid="uid://dmy0rv37iousw" path="res://assets/Grass_Patch3_3Dmodel.glb" id="1_pvqg0"]
+[ext_resource type="PackedScene" uid="uid://c4d7k7u44ik6f" path="res://scenes/TreeSGrassMeshLib.tscn" id="2_baglu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p1x7y"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvqg0"]
+albedo_color = Color(0.101447, 0.278982, 0.096382, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_baglu"]
+material = SubResource("StandardMaterial3D_pvqg0")
+size = Vector3(50, 1, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_baglu"]
+albedo_color = Color(0.790288, 0.337834, 1.92523e-07, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_t45w4"]
+material = SubResource("StandardMaterial3D_baglu")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 5.0
+
+[node name="Base" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_p1x7y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_baglu")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.693736, 0)
+
+[node name="Grass_Patch3_3Dmodel" parent="." instance=ExtResource("1_pvqg0")]
+transform = Transform3D(0.225, 0, 0, 0, 0.225, 0, 0, 0, 0.225, 0.166903, 0.72, -1.5006)
+
+[node name="Tree1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.96622)
+mesh = SubResource("CylinderMesh_t45w4")
+
+[node name="TreeSGrassMeshLib" parent="." instance=ExtResource("2_baglu")]
+metadata/_editor_floor_ = Vector3(0, -63, 0)
