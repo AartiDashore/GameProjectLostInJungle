@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4d7k7u44ik6f"]
+
+[ext_resource type="MeshLibrary" uid="uid://cafd4ly35punw" path="res://scenes/TreeGrass.tres" id="1_ru2nv"]
+
+[node name="TreeSGrassMeshLib" type="GridMap"]
+mesh_library = ExtResource("1_ru2nv")
+data = {
+"cells": PackedInt32Array(65535, 65498, 1, 65531, 65504, 1, 65461, 65493, 1, 65514, 65523, 0, 1, 65511, 0)
+}
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)

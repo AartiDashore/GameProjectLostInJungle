@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://butjv1nrg16yf"]
+
+[ext_resource type="PackedScene" uid="uid://cglhfb17jvj42" path="res://assets/apple.glb" id="1_h071m"]
+[ext_resource type="Script" uid="uid://gt7b1qwofe1w" path="res://all_gdscripts/apple.gd" id="1_mirkr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mirkr"]
+
+[node name="RigidBody3D" type="RigidBody3D"]
+script = ExtResource("1_mirkr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_mirkr")
+
+[node name="apple" parent="CollisionShape3D" instance=ExtResource("1_h071m")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]

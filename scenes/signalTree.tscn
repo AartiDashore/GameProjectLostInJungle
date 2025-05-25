@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://d21qyvycpoun5"]
+
+[ext_resource type="Script" uid="uid://y2thaa5pcgie" path="res://all_gdscripts/signal_tree.gd" id="1_t5o7x"]
+[ext_resource type="PackedScene" uid="uid://caqxfqurbp3ku" path="res://scenes/pine_tree.tscn" id="2_axf4s"]
+[ext_resource type="Script" uid="uid://bleitlqo117xm" path="res://all_gdscripts/treeSignaling.gd" id="3_pdyk3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7stld"]
+size = Vector3(1, 4.675, 1)
+
+[node name="signalTree" type="Node3D"]
+script = ExtResource("1_t5o7x")
+
+[node name="pine_tree" parent="." instance=ExtResource("2_axf4s")]
+
+[node name="Area3D" type="Area3D" parent="pine_tree"]
+script = ExtResource("3_pdyk3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pine_tree/Area3D"]
+shape = SubResource("BoxShape3D_7stld")
+
+[connection signal="body_entered" from="pine_tree/Area3D" to="pine_tree/Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="pine_tree/Area3D" to="pine_tree/Area3D" method="_on_body_exited"]

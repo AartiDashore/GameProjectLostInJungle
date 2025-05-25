@@ -1,0 +1,44 @@
+[gd_scene load_steps=11 format=3 uid="uid://cs6wa8c18hpdk"]
+
+[ext_resource type="PackedScene" uid="uid://di7oxhcwpskj8" path="res://assets/Grass_Patch1_3Dmodel.glb" id="1_jn13j"]
+[ext_resource type="PackedScene" uid="uid://dmy0rv37iousw" path="res://assets/Grass_Patch3_3Dmodel.glb" id="1_pvqg0"]
+[ext_resource type="PackedScene" uid="uid://coqc7kukgq66t" path="res://assets/Tall_Forest_Trees1_3Dmodel.glb" id="3_6irmp"]
+[ext_resource type="PackedScene" uid="uid://b8abs8me7ckgo" path="res://scenes/bush.tscn" id="5_6irmp"]
+[ext_resource type="PackedScene" uid="uid://cia3jakp3wj1d" path="res://scenes/grass_2.tscn" id="6_dmaw2"]
+[ext_resource type="PackedScene" uid="uid://8ay5rlrutcmx" path="res://scenes/large_rock.tscn" id="7_1xxg6"]
+[ext_resource type="PackedScene" uid="uid://bodkixm8bubes" path="res://scenes/mushroom.tscn" id="8_517kj"]
+[ext_resource type="PackedScene" uid="uid://cudkryn4yfayv" path="res://assets/Grass_Patch2_3Dmodel.glb" id="9_ycryd"]
+[ext_resource type="PackedScene" uid="uid://bltmr2xgs8nq1" path="res://scenes/small_rock.tscn" id="10_ot4hf"]
+[ext_resource type="PackedScene" uid="uid://caqxfqurbp3ku" path="res://scenes/pine_tree.tscn" id="10_ystrd"]
+
+[node name="Base" type="Node3D"]
+
+[node name="Grass_Patch1_3Dmodel" parent="." instance=ExtResource("1_jn13j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.757225, 0)
+
+[node name="Grass_Patch2_3Dmodel" parent="." instance=ExtResource("9_ycryd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.854583, 1.66589)
+
+[node name="Grass_Patch3_3Dmodel" parent="." instance=ExtResource("1_pvqg0")]
+transform = Transform3D(0.68, 0, 0, 0, 0.68, 0, 0, 0, 0.68, 0, 0.571975, 3.70584)
+
+[node name="Tall_Forest_Trees1_3Dmodel" parent="." instance=ExtResource("3_6irmp")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.01205, -1.75244)
+
+[node name="bush" parent="." instance=ExtResource("5_6irmp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.28852)
+
+[node name="grass_2" parent="." instance=ExtResource("6_dmaw2")]
+transform = Transform3D(1.57, 0, 0, 0, 1.57, 0, 0, 0, 1.57, 0, 0.0849344, 5.14702)
+
+[node name="large_rock" parent="." instance=ExtResource("7_1xxg6")]
+transform = Transform3D(0.84, 0, 0, 0, 0.84, -0.000263895, 0, 0.000263895, 0.84, 0, 0.560566, -5.79252)
+
+[node name="mushrooms" parent="." instance=ExtResource("8_517kj")]
+transform = Transform3D(1.23, 0, 0, 0, 1.23, 0, 0, 0, 1.23, 0, 0.101921, 6.04732)
+
+[node name="pine_tree" parent="." instance=ExtResource("10_ystrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.203842, 7.30435)
+
+[node name="small_rock" parent="." instance=ExtResource("10_ot4hf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.203842, -8.34055)
