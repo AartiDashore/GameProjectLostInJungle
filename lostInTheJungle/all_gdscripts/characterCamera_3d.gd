@@ -18,6 +18,10 @@ func _process(delta):
 		var next_position = global_position.lerp(target_position, delta * 100.0)
 		var offset = next_position - global_position
 		transform = transform.translated(offset)
+		
+		#var mat := $Camera3D.material_override as ShaderMaterial 	#For Fog Shader
+		#if mat:
+			#mat.set_shader_parameter("camera_position", get_viewport().get_camera_3d().global_transform.origin)
 
 	else:
 		print("Warning: Player node not assigned!")
