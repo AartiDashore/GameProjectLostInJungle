@@ -1,7 +1,3 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://d01d0h08lqqn6"]
-
-[ext_resource type="Texture2D" uid="uid://c7pop5xgpxtiv" path="res://addons/proton_scatter/demos/assets/textures/t_tree_bark_rough.png" id="1_g4son"]
-
-[resource]
-albedo_color = Color(0.470588, 0.376471, 0.309804, 1)
-albedo_texture = ExtResource("1_g4son")
+version https://git-lfs.github.com/spec/v1
+oid sha256:9ea2f8472b7d331def657ec9f741ead82dce091fd0d15c50192e64b3af955c72
+size 345

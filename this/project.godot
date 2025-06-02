@@ -12,7 +12,7 @@ config_version=5
 
 config/name="litjmain1"
 run/main_scene="uid://d2vvj2je1u6i0"
-config/features=PackedStringArray("4.4", "C#", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [dotnet]

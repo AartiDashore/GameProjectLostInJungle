@@ -63,7 +63,7 @@ func _physics_process(delta):
 	
 	# Handle interactions
 	if Input.is_action_just_pressed("Pick Up"):
-		var ray = $Camera3D/PickupRay
+		var ray = $Head/Camera3D/PickupRay
 		if ray.is_colliding():
 			var collider = ray.get_collider()
 			if collider and collider.has_method("pick_up"):
@@ -83,7 +83,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("Attack"):
 		print("Attack!")
 		
-	print("On Floor:", is_on_floor(), "  Position Y:", position.y)
+	#print("On Floor:", is_on_floor(), "  Position Y:", position.y)
 	
 
 	# Footstep logic

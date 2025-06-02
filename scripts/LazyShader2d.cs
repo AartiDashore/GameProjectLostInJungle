@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-[Tool]
+
 public partial class LazyShader2d : Node3D
 {
 	
