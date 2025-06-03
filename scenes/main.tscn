@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://beyaw1pxe05xe" path="res://all_gdscripts/GameManager.gd" id="1_85g3d"]
 [ext_resource type="Shader" uid="uid://dsoc40sndv1hf" path="res://shaders/ground.gdshader" id="1_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://coqc7kukgq66t" path="res://assets/Tall_Forest_Trees1_3Dmodel.glb" id="9_85g3d"]
-[ext_resource type="AudioStream" uid="uid://c36smleg8o44d" path="res://assets/sound/Forest_background_sound.mp3" id="10_choun"]
+[ext_resource type="AudioStream" uid="uid://lysopb6f54ab" path="res://assets/sound/Forest_background_sound.mp3" id="10_choun"]
 [ext_resource type="PackedScene" uid="uid://c8a2ipioopinx" path="res://scenes/ForestAssetsGridLib.tscn" id="10_eb6dy"]
 [ext_resource type="Shader" uid="uid://1nlcmo7brbnr" path="res://all_gdscripts/moon_light_glow.gdshader" id="11_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://cs1n2s4dhhbcx" path="res://assets/images/moon.png" id="11_ya4ey"]
