@@ -1,0 +1,36 @@
+[gd_scene load_steps=9 format=3 uid="uid://bn01w6lpq4pb2"]
+
+[ext_resource type="PackedScene" uid="uid://dhru70l8yw60k" path="res://assets/Grass_Patch1_reduced.glb" id="1_t0mnn"]
+[ext_resource type="PackedScene" uid="uid://s0u08c6q56jl" path="res://assets/Grass_Patch2_reduced.glb" id="2_8k7iv"]
+[ext_resource type="PackedScene" uid="uid://blvq4d3jyfqqd" path="res://assets/Grass_Patch3_reduced.glb" id="3_3l34k"]
+[ext_resource type="PackedScene" uid="uid://b4xbmsurtuufq" path="res://assets/Tall_Forest_Trees1_reduced.glb" id="4_81ebh"]
+[ext_resource type="PackedScene" uid="uid://duvd4nvxjdvem" path="res://assets/bush_reduced.glb" id="5_ur37v"]
+[ext_resource type="PackedScene" uid="uid://21128fd1a3hc" path="res://assets/large_rock.glb" id="6_5f3ns"]
+[ext_resource type="PackedScene" uid="uid://dpa7xci5bvaju" path="res://assets/pine_tree_reduced.glb" id="7_jpusp"]
+[ext_resource type="PackedScene" uid="uid://da0piph4eavo8" path="res://assets/tree_reduced.glb" id="8_cx4tw"]
+
+[node name="ForestGridlib" type="Node3D"]
+
+[node name="Grass_Patch1_reduced" parent="." instance=ExtResource("1_t0mnn")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Grass_Patch2_reduced" parent="." instance=ExtResource("2_8k7iv")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Grass_Patch3_reduced" parent="." instance=ExtResource("3_3l34k")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Tall_Forest_Trees1_reduced" parent="." instance=ExtResource("4_81ebh")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="bush_reduced" parent="." instance=ExtResource("5_ur37v")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="large_rock" parent="." instance=ExtResource("6_5f3ns")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="pine_tree_reduced" parent="." instance=ExtResource("7_jpusp")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="tree_reduced" parent="." instance=ExtResource("8_cx4tw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

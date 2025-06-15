@@ -1,14 +1,14 @@
 class_name SoundFacade
 extends Node
 
-@onready var ambient_player = $AmbientAudio
-@onready var footstep_player = $PlayerFootstep
-@onready var combat_player = $CombatAudio
-@onready var dialogue_player = $DialogueAudio
+@onready var ambient_player = get_node("/root/Main/ForestAmbientAudio")
+@onready var footstep_player = get_node("/root/Main/Player/WalkSound")
+#@onready var combat_player = $CombatAudio
+#@onready var dialogue_player = $DialogueAudio
 
-#func play_ambient(sound_name: String):
-	#ambient_player.stream = load("res://sounds/ambient/" + sound_name + ".ogg")
-	#ambient_player.play()
+func play_ambient(sound_name: String):
+	ambient_player.stream = load("res://assets/sound/" + sound_name + ".mp3")
+	ambient_player.play()
 
 func play_footstep(sound_name: String):
 	footstep_player.stream = load("res://assets/sound/" + sound_name + ".wav")

@@ -11,15 +11,15 @@ var sway_timer: float = 0.0
 func _ready():
 	original_rotation = transform.basis
 
-func _process(delta):
-	if is_player_near:
-		sway_timer += delta * sway_speed
-		var angle = deg_to_rad(sin(sway_timer) * tilt_strength)
-		var sway = Basis(tilt_axis.normalized(), angle)
-		transform.basis = original_rotation * sway
-	else:
-		sway_timer = 0.0
-		transform.basis = original_rotation
+#func _process(delta):
+#	if is_player_near:
+#		sway_timer += delta * sway_speed
+#		var angle = deg_to_rad(sin(sway_timer) * tilt_strength)
+#		var sway = Basis(tilt_axis.normalized(), angle)
+#		transform.basis = original_rotation * sway
+#	else:
+#		sway_timer = 0.0
+#		transform.basis = original_rotation
 
 func _on_area_3d_body_entered(body):
 	if body.name == "Player":

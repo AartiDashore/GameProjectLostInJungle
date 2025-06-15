@@ -1,20 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://dgj4lrvb885q2"]
 
-[ext_resource type="Script" uid="uid://br5sgodavyy5q" path="res://all_gdscripts/characterCamera_3d.gd" id="1_2q73w"]
 [ext_resource type="Script" uid="uid://ds3f6hfb7ejqq" path="res://scenes/playercharacter_body_3d.gd" id="1_fjaif"]
 [ext_resource type="Script" uid="uid://bm2est3i46tqh" path="res://all_gdscripts/head.gd" id="2_37ycl"]
-[ext_resource type="Shader" uid="uid://cel7yppgbgu2q" path="res://all_gdscripts/Fog_Shader.gdshader" id="3_etamf"]
+[ext_resource type="Shader" uid="uid://cel7yppgbgu2q" path="res://shaders/Fog_Shader.gdshader" id="3_etamf"]
 [ext_resource type="AudioStream" uid="uid://t7bk1rp14ry8" path="res://assets/sound/footsteps-in-the-forest-ground-1230.wav" id="4_aybju"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w48qg"]
-
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_fjaif"]
-albedo_color = Color(0.662745, 0.835294, 0.705882, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_37ycl"]
-material = SubResource("ORMMaterial3D_fjaif")
-radius = 0.7
-height = 12.881
+[ext_resource type="PackedScene" uid="uid://baf1tltiu27ji" path="res://UI/inventory.tscn" id="5_etamf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gi05f"]
 render_priority = 0
@@ -51,11 +41,36 @@ volumetric_fog_ambient_inject = 1.99
 
 [sub_resource type="Compositor" id="Compositor_aybju"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w48qg"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_fjaif"]
+albedo_color = Color(0.662745, 0.835294, 0.705882, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_37ycl"]
+material = SubResource("ORMMaterial3D_fjaif")
+radius = 0.7
+height = 12.881
+
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(0.21, 0, 0, 0, 0.21, 0, 0, 0, 0.21, 0, 0, 0)
 input_capture_on_drag = true
 script = ExtResource("1_fjaif")
-mouse_sensitivity = 0.025
+
+[node name="Head" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
+transform = Transform3D(4.76191, 0, 0, 0, 4.76191, 0, 0, 0, 4.76191, 0, 1.05911, -2.90302)
+environment = SubResource("Environment_fjaif")
+attributes = SubResource("CameraAttributesPhysical_37ycl")
+compositor = SubResource("Compositor_aybju")
+doppler_tracking = 2
+current = true
+script = ExtResource("2_37ycl")
+player = NodePath("..")
+
+[node name="Hand" type="Node3D" parent="Head"]
+transform = Transform3D(0.17367, 0, 0, 0, 0.17367, 0, 0, 0, 0.17367, 0.35, 0.116, -5)
+
+[node name="PickupRay" type="RayCast3D" parent="Head"]
+target_position = Vector3(0, 0, -5.395)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_w48qg")
@@ -64,22 +79,9 @@ debug_color = Color(0.742321, 0.241468, 0.64162, 0.419608)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
 mesh = SubResource("CapsuleMesh_37ycl")
 
-[node name="Head" type="Node3D" parent="."]
-script = ExtResource("2_37ycl")
-
-[node name="Camera3D" type="Camera3D" parent="Head" node_paths=PackedStringArray("player")]
-transform = Transform3D(4.76191, 0, 0, 0, 4.76191, 0, 0, 0, 4.76191, 0, 0, -11.245)
-environment = SubResource("Environment_fjaif")
-attributes = SubResource("CameraAttributesPhysical_37ycl")
-compositor = SubResource("Compositor_aybju")
-doppler_tracking = 2
-current = true
-script = ExtResource("1_2q73w")
-player = NodePath("../..")
-
-[node name="PickupRay" type="RayCast3D" parent="Head/Camera3D"]
-target_position = Vector3(0, 0, -3)
-collide_with_areas = true
-
 [node name="WalkSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_aybju")
+bus = &"Footsteps"
+
+[node name="Inventory" parent="." instance=ExtResource("5_etamf")]
+visible = false

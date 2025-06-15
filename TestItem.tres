@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://brc2gf31cwjs5"]
+
+[ext_resource type="Texture2D" uid="uid://babp12sl48pg2" path="res://assets/images/apple_thumbnail2.png" id="1_7x4ac"]
+[ext_resource type="Script" uid="uid://cy6tf4ynu0h1p" path="res://all_gdscripts/Item.gd" id="1_uuhyc"]
+
+[resource]
+script = ExtResource("1_uuhyc")
+ID = 0
+Name = "Test Item"
+ResourcePath = ""
+Icon = ExtResource("1_7x4ac")
+Quantity = 2
+StackSize = 20
+IsStackable = true

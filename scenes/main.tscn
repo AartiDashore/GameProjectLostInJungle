@@ -1,16 +1,22 @@
-[gd_scene load_steps=27 format=3 uid="uid://d2vvj2je1u6i0"]
+[gd_scene load_steps=30 format=3 uid="uid://d2vvj2je1u6i0"]
 
 [ext_resource type="Script" uid="uid://beyaw1pxe05xe" path="res://all_gdscripts/GameManager.gd" id="1_85g3d"]
 [ext_resource type="Shader" uid="uid://dsoc40sndv1hf" path="res://shaders/ground.gdshader" id="1_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://dknynjnv2b5ka" path="res://assets/Volmiroth_Demon_3Dmodel.glb" id="3_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://coqc7kukgq66t" path="res://assets/Tall_Forest_Trees1_3Dmodel.glb" id="9_85g3d"]
 [ext_resource type="AudioStream" uid="uid://lysopb6f54ab" path="res://assets/sound/Forest_background_sound.mp3" id="10_choun"]
 [ext_resource type="PackedScene" uid="uid://c8a2ipioopinx" path="res://scenes/ForestAssetsGridLib.tscn" id="10_eb6dy"]
-[ext_resource type="Shader" uid="uid://1nlcmo7brbnr" path="res://all_gdscripts/moon_light_glow.gdshader" id="11_eb6dy"]
+[ext_resource type="Shader" uid="uid://1nlcmo7brbnr" path="res://shaders/moon_light_glow.gdshader" id="11_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://cs1n2s4dhhbcx" path="res://assets/images/moon.png" id="11_ya4ey"]
-[ext_resource type="PackedScene" uid="uid://cb40wxy88ct5i" path="res://scenes/sword.tscn" id="12_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://4amceujyhg50" path="res://assets/Temple1_3Dmodel.glb" id="13_2wyq8"]
+[ext_resource type="PackedScene" uid="uid://cow0cfg6soybh" path="res://scenes/sword2.tscn" id="13_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://0ddm10vpep02" path="res://scenes/PauseMenu.tscn" id="13_trceg"]
+[ext_resource type="PackedScene" uid="uid://chk5fxhhnebov" path="res://assets/RiddleTree_reduced.glb" id="14_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://dgj4lrvb885q2" path="res://scenes/Playercharacter_body_3d.tscn" id="14_vxglm"]
-[ext_resource type="Script" uid="uid://gt7b1qwofe1w" path="res://all_gdscripts/apple.gd" id="16_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://c4asxojaolitb" path="res://scenes/HeathBar.tscn" id="15_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://c3fyxdl7r41rw" path="res://scenes/FloorElementsMeshLib.tscn" id="16_dp3eg"]
+[ext_resource type="PackedScene" uid="uid://cj4j8x73ix56b" path="res://scenes/apple1.tscn" id="16_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://caqxfqurbp3ku" path="res://scenes/pine_tree.tscn" id="18_0ld40"]
 [ext_resource type="PackedScene" uid="uid://d21qyvycpoun5" path="res://scenes/signalTree.tscn" id="19_0ld40"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jbj1t"]
@@ -44,25 +50,13 @@ size = Vector3(20, 1, 20)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jkv2x"]
 size = Vector3(20, 1, 20)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0xm2m"]
-render_priority = 0
-shader = ExtResource("1_a8y0u")
-
-[sub_resource type="BoxMesh" id="BoxMesh_h2yge"]
-material = SubResource("ShaderMaterial_0xm2m")
-size = Vector3(10, 1, 10)
-subdivide_width = 1
-subdivide_height = 1
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_jbj1t"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trceg"]
 render_priority = 0
 shader = ExtResource("11_eb6dy")
 shader_parameter/moon_color = Vector4(0.6, 0.6, 1, 1)
 shader_parameter/glow_strength = 0.5
 
-[node name="Node3D" type="Node3D"]
+[node name="Main" type="Node3D"]
 script = ExtResource("1_85g3d")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -88,7 +82,7 @@ physics_material_override = SubResource("PhysicsMaterial_jkv2x")
 shape = SubResource("BoxShape3D_7dm0k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
 mesh = SubResource("BoxMesh_dp3eg")
 skeleton = NodePath("")
 
@@ -98,45 +92,23 @@ physics_material_override = SubResource("PhysicsMaterial_a8y0u")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_jkv2x")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/MeshInstance3D"]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
-mesh = SubResource("BoxMesh_dp3eg")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="StaticBody3D/MeshInstance3D/MeshInstance3D"]
-physics_material_override = SubResource("PhysicsMaterial_a8y0u")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/MeshInstance3D/MeshInstance3D/StaticBody3D"]
-shape = SubResource("BoxShape3D_jkv2x")
-
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
-mesh = SubResource("BoxMesh_h2yge")
+[node name="Volmiroth_Demon_3Dmodel" parent="StaticBody3D" instance=ExtResource("3_jkv2x")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -24.9194, 8.52087, -0.314907)
 
 [node name="Temple1_3Dmodel" parent="." instance=ExtResource("13_2wyq8")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 88.3163, 3.78223, -85.6884)
+transform = Transform3D(14.9032, 0, 1.70143, 0, 15, 0, -1.70143, 0, 14.9032, -31.2359, 3.78223, -71.6052)
 top_level = true
 
 [node name="Player" parent="." instance=ExtResource("14_vxglm")]
-transform = Transform3D(0.0499934, 0, 0.000811532, 0, 0.05, 0, -0.000811532, 0, 0.0499934, 1.42632, 4.13099, 0)
-mouse_sensitivity = 0.003
-
-[node name="Apple" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -34.8675, -0.526085)
-script = ExtResource("16_jbj1t")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Apple"]
-shape = SubResource("SphereShape3D_jbj1t")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Apple"]
+transform = Transform3D(0.21, 0, 0, 0, 0.21, 0, 0, 0, 0.21, 0, 1.55874, 0)
 
 [node name="signalTree" parent="." instance=ExtResource("19_0ld40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79991, -26.3717)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 1.79991, -26.3717)
 
 [node name="Tall_Forest_Trees1_3Dmodel" parent="." instance=ExtResource("9_85g3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.1779, 2.73824, -8.06442)
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 25.1779, 15.88, -8.06442)
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="ForestAmbientAudio" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("10_choun")
 autoplay = true
 playback_type = 1
@@ -155,5 +127,60 @@ transform = Transform3D(1, 0, 0, 0, 0.862787, -0.505567, 0, 0.505567, 0.862787, 
 material_overlay = SubResource("ShaderMaterial_trceg")
 texture = ExtResource("11_ya4ey")
 
-[node name="sword" parent="." instance=ExtResource("12_eb6dy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.03, 0)
+[node name="GameTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("13_trceg")]
+process_mode = 2
+
+[node name="UI" parent="." instance=ExtResource("15_jkv2x")]
+
+[node name="Sword" parent="." instance=ExtResource("13_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45728, 0.68889, 0)
+
+[node name="RiddleTree_reduced" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(0.261181, 0.00261209, 7.99574, -0.0800046, 7.9996, 1.19112e-09, -7.99534, -0.0799619, 0.261194, -33.6047, 0.5, -15.3352)
+
+[node name="FloorElementsMeshLib" parent="." instance=ExtResource("16_dp3eg")]
+
+[node name="apple1" parent="." instance=ExtResource("16_jbj1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29858, -8.57176)
+
+[node name="pine_tree" parent="." instance=ExtResource("18_0ld40")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -10.5281, 0.7, -20.5253)
+
+[node name="pine_tree2" parent="." instance=ExtResource("18_0ld40")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 4.82985, 0.7, -20.5253)
+
+[node name="pine_tree3" parent="." instance=ExtResource("18_0ld40")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 39.0218, 0.7, -20.5253)
+
+[node name="pine_tree4" parent="." instance=ExtResource("18_0ld40")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 22.7332, 0.7, -62.0651)
+
+[node name="pine_tree5" parent="." instance=ExtResource("18_0ld40")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -10.5281, 0.7, 21.7345)
+
+[node name="pine_tree6" parent="." instance=ExtResource("18_0ld40")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -78.8326, 0.7, -35.6882)
+
+[node name="RiddleTree_reduced2" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(7.98124, 0.0798209, 0.541755, -0.0800046, 7.9996, -6.74403e-09, -0.541728, -0.00541785, 7.98164, 63.1696, 0.5, -81.0619)
+
+[node name="RiddleTree_reduced3" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(0.261181, 0.00261209, 7.99574, -0.0800046, 7.9996, 1.19112e-09, -7.99534, -0.0799619, 0.261194, -73.8807, 0.5, -14.2156)
+
+[node name="Tall_Forest_Trees1_3Dmodel2" parent="." instance=ExtResource("9_85g3d")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 25.1779, 15.8691, 16.3027)
+
+[node name="Tall_Forest_Trees1_3Dmodel3" parent="." instance=ExtResource("9_85g3d")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -57.5557, 16.0685, -73.1909)
+
+[node name="Tall_Forest_Trees1_3Dmodel4" parent="." instance=ExtResource("9_85g3d")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -3.04153, 15.8689, -58.805)
+
+[node name="Tall_Forest_Trees1_3Dmodel5" parent="." instance=ExtResource("9_85g3d")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -51.3972, 18.5097, -0.873059)
+
+[node name="Tall_Forest_Trees1_3Dmodel6" parent="." instance=ExtResource("9_85g3d")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -25.0018, 14.8658, 27.0605)

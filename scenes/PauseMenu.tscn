@@ -1,0 +1,282 @@
+[gd_scene load_steps=4 format=3 uid="uid://0ddm10vpep02"]
+
+[ext_resource type="Script" uid="uid://d37awmy0da6rd" path="res://all_gdscripts/PauseMenu.gd" id="1_jvnd5"]
+[ext_resource type="Script" uid="uid://dfu2evk6mitx3" path="res://all_gdscripts/shortcuts_pannel.gd" id="2_g4jo0"]
+[ext_resource type="Script" uid="uid://dahtq04usdlwm" path="res://all_gdscripts/audio_settings_panel.gd" id="3_komsw"]
+
+[node name="PauseMenu" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = ExtResource("1_jvnd5")
+
+[node name="Panel" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button_Continue" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 268.0
+offset_right = 597.0
+offset_bottom = 349.0
+text = "Continue"
+
+[node name="Button_NewGame" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 618.0
+offset_top = 270.0
+offset_right = 1027.0
+offset_bottom = 346.0
+text = "New Game"
+
+[node name="Button_AudioSettings" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 619.0
+offset_top = 367.0
+offset_right = 1027.0
+offset_bottom = 440.0
+text = "Audio Settings"
+
+[node name="Button_KeyboardShortcuts" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 368.0
+offset_right = 599.0
+offset_bottom = 444.0
+text = "Keyboard Shortcuts"
+
+[node name="HBoxContainer_NavArrows" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.181
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 824.0
+offset_top = 22.712
+offset_right = -125.0
+offset_bottom = -440.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Button_Quit" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 472.0
+offset_right = 1029.0
+offset_bottom = 528.0
+text = "Quit"
+
+[node name="ShortcutsPanel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = 166.0
+offset_right = 1153.0
+offset_bottom = 644.0
+script = ExtResource("2_g4jo0")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ShortcutsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShortcutsPanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_constants/separation = 10
+
+[node name="Open Menu" type="Label" parent="ShortcutsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Open Menu"
+horizontal_alignment = 1
+
+[node name="Move Forward" type="Label" parent="ShortcutsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Move Forward"
+
+[node name="Move Backward" type="Label" parent="ShortcutsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Move Backward"
+
+[node name="Left" type="Label" parent="ShortcutsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Left"
+
+[node name="Right" type="Label" parent="ShortcutsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Right"
+
+[node name="Jump" type="Label" parent="ShortcutsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Jump"
+
+[node name="Sprint" type="Label" parent="ShortcutsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sprint"
+
+[node name="Pick Up Item" type="Label" parent="ShortcutsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Pick Up Item"
+
+[node name="Drop An item" type="Label" parent="ShortcutsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Drop An Item"
+
+[node name="Inventory" type="Label" parent="ShortcutsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Inventory"
+
+[node name="Attack" type="Label" parent="ShortcutsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Attack"
+
+[node name="Button_Back" type="Button" parent="ShortcutsPanel"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 481.0
+offset_right = -457.0
+offset_bottom = -428.0
+text = "Return To Main Menu"
+
+[node name="AudioSettingsPanel" type="Panel" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = 167.0
+offset_right = 1153.0
+offset_bottom = 644.0
+script = ExtResource("3_komsw")
+
+[node name="Audio Settings" type="Label" parent="AudioSettingsPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Audio Settings"
+
+[node name="Label_Background_Volume" type="Label" parent="AudioSettingsPanel"]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 120.0
+offset_right = 597.0
+offset_bottom = 143.0
+text = "Background Volume:"
+
+[node name="BackgroundSlider" type="HSlider" parent="AudioSettingsPanel"]
+layout_mode = 0
+offset_left = 618.0
+offset_top = 122.0
+offset_right = 1026.0
+offset_bottom = 145.0
+
+[node name="Label_Footsteps_Volume" type="Label" parent="AudioSettingsPanel"]
+layout_mode = 0
+offset_left = 452.0
+offset_top = 173.0
+offset_right = 597.0
+offset_bottom = 196.0
+text = "Footsteps Volume:"
+
+[node name="FootstepSlider" type="HSlider" parent="AudioSettingsPanel"]
+layout_mode = 0
+offset_left = 619.0
+offset_top = 169.0
+offset_right = 1026.0
+offset_bottom = 200.0
+
+[node name="BackgroundMuteCheck" type="CheckButton" parent="AudioSettingsPanel"]
+layout_mode = 0
+offset_left = 523.0
+offset_top = 213.0
+offset_right = 656.0
+offset_bottom = 247.0
+text = "Mute All: "
+
+[node name="Button_Back" type="Button" parent="AudioSettingsPanel"]
+layout_mode = 0
+offset_left = 477.0
+offset_right = 694.0
+offset_bottom = 47.0
+text = "Return To Main Menu"
+
+[node name="FootstepsMuteCheck" type="CheckButton" parent="AudioSettingsPanel"]
+layout_mode = 0
+offset_left = 612.0
+offset_top = 255.0
+offset_right = 656.0
+offset_bottom = 288.0
+
+[node name="TopLabelPanel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 167.0
+
+[node name="Label_GameTitle" type="Label" parent="TopLabelPanel"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 26.0
+offset_right = 201.0
+offset_bottom = 91.0
+text = "Lost In The Jungle"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label_Menu" type="Label" parent="TopLabelPanel"]
+layout_mode = 0
+offset_left = 473.0
+offset_top = 17.0
+offset_right = 774.0
+offset_bottom = 67.0
+text = "Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label_Timer" type="Label" parent="TopLabelPanel"]
+layout_mode = 0
+offset_left = 895.0
+offset_top = 23.0
+offset_right = 1044.0
+offset_bottom = 60.0
+text = "00:00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label_PauseStatus" type="Label" parent="TopLabelPanel"]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 95.0
+offset_right = 995.0
+offset_bottom = 175.0
+text = "The Game is Paused
+Press Esc to Resume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button_CloseMenu" type="Button" parent="TopLabelPanel"]
+layout_mode = 0
+offset_left = 1072.0
+offset_top = 19.0
+offset_right = 1137.0
+offset_bottom = 64.0
+text = "X"
+
+[connection signal="pressed" from="Panel/Button_Continue" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="Panel/Button_NewGame" to="." method="_on_button_new_game_pressed"]
+[connection signal="pressed" from="Panel/Button_AudioSettings" to="." method="_on_button_audio_settings_pressed"]
+[connection signal="pressed" from="Panel/Button_KeyboardShortcuts" to="." method="_on_button_keyboard_shortcuts_pressed"]
+[connection signal="pressed" from="Panel/Button_Quit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="ShortcutsPanel/Button_Back" to="ShortcutsPanel" method="_on_button_back_pressed"]
+[connection signal="pressed" from="AudioSettingsPanel/Button_Back" to="AudioSettingsPanel" method="_on_button_back_pressed"]
+[connection signal="pressed" from="TopLabelPanel/Button_CloseMenu" to="." method="_on_button_close_menu_pressed"]

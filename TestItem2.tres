@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://vh014c656ksn"]
+
+[ext_resource type="Texture2D" uid="uid://bhaja7h3d30tu" path="res://assets/images/sword_thumbnail2.png" id="1_53o7b"]
+[ext_resource type="Script" uid="uid://cy6tf4ynu0h1p" path="res://all_gdscripts/Item.gd" id="2_k5u27"]
+
+[resource]
+script = ExtResource("2_k5u27")
+ID = 2
+Name = "Test Item 2"
+ResourcePath = ""
+Icon = ExtResource("1_53o7b")
+Quantity = 1
+StackSize = 20
+IsStackable = true

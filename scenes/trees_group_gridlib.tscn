@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw3cj6xw3r65b"]
+
+[ext_resource type="MeshLibrary" uid="uid://b0w1on5cx3a6r" path="res://scenes/trees_group.tres" id="1_0ww5m"]
+
+[node name="TreesGroupGridlib" type="GridMap"]
+mesh_library = ExtResource("1_0ww5m")

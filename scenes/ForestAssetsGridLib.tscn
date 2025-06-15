@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c8a2ipioopinx"]
 
-[ext_resource type="MeshLibrary" uid="uid://du8s100d1yg4d" path="res://scenes/ForestAssets.tres" id="1_765sv"]
+[ext_resource type="MeshLibrary" uid="uid://dyegyuyii2axl" path="res://scenes/ForestAssets.tres" id="1_765sv"]
 
 [node name="ForestAssetsGridLib" type="GridMap"]
 mesh_library = ExtResource("1_765sv")
